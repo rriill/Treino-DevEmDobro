@@ -1,0 +1,119 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+main::after {
+    content: '';
+    min-height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0.05926120448179273) 50%, rgba(0, 0, 0, 1) 90%); /*buscar esse gradiente em https://cssgradient.io/ */
+    z-index: -1;
+}
+
+.conteudo {
+    /* background-color: aquamarine;  usado somente para melhor trabalhar visualmente os elementos na tela*/
+    display: flex;
+    flex-direction: column;
+	min-height: 100vh;
+    justify-content: space-evenly;
+}
+
+/* .informacoes{
+    background-color: blueviolet;
+} usado somente para melhor trabalhar visualmente os elementos na tela*/
+
+.informacoes .logo {
+    max-width: 350px;
+    filter: invert(1);
+    margin-bottom: 80px;
+}
+
+.informacoes .descricao {
+    width: 49%;
+    font-size: 24px;
+    color: #ffffff;
+    line-height: 30px;
+}
+
+.botoes-carrossel {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.botoes-carrossel .botao {
+    background-color: #ffffff;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    border-color: #ffffff;
+}
+
+.botoes-carrossel .botao.selecionado {
+    background-color: #1d8346;
+}
+
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80px;
+    display: flex;
+    /*flex-direction: row;  é padrão * - não preciso colocar essa linha. justify-content: center Centraliza horizontalmente*/
+    /*flex-direction: column;  Não é padrão * - Então preciso colocar essa linha para o justify-content: center centralizar verticalmente . */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /*se eu não colocar esse comando do CSS os icones ficam sem altura para centralizar. */
+}
+
+.menu-lateral ul {
+    display: flex;
+    flex-direction: column; /*se eu não colocar flex-direction: column, os icones ficarão um do lado do outro porque o padrão é row */
+    gap: 15px;
+}
+
+.menu-lateral .icone {
+    width: 30px;
+    filter: invert(1);
+    transition: 0.3s ease-in-out;
+}
+
+.menu-lateral .icone:hover {
+    transform: scale(1.2);
+}
+
+.carrossel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1; /* É o eixo Z (da profundidade) dos 3 eixos X,Y e Z da matemática. Se eu colocar 1 no lugar de -1 as imagens vai sobrepor o titulo e a descrição fazendo desaparecer da tela. */
+}
+
+.carrossel .imagem {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover; /* o valor dessa propriedade deve ser cover para cobrir todo o tamanho da DIV*/
+    display: none; /*esconde as imagens. O trabalho de mostrar as imagens será feito no javascript*/
+    animation: mudarImagem 0.7s; /*essa propriedade animation tem vários valore serem preenchidos mas basta as 2 que coloquei. Em seguida temos que criar a animação com os @keyframes que esta logo abaixo.*/
+}
+
+.carrossel .imagem.ativa { /*não usa espaço entre .imagem.ativa porque estou definindo regras para um elemento que tem 2 classes. Preciso ir no codigo HTML e colocar na primeira img (somente na primeira img) o seguinte (<img class="imagem ativa" src="./src/imagens/tlou-1.jpg" alt="Ellie e Joel abraçados">). Se eu colocar na segunda img, a segunda imagem ficará aparecendo como sendo a padrão. */
+    display: block /* display:block é para mostrar a imagem*/;
+}
+
+@keyframes mudarImagem {
+    from{
+        opacity: 0.85; /* a opacidade começa em *0.85*/
+    }
+    to{
+        opacity: 1; /* a opacidade vai até 1 que significa sem opacidade nenhuma ou seja a imagem normal. */
+    }
+}
